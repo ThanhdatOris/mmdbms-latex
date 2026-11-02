@@ -1,0 +1,53 @@
+# ==========================================
+# Gitignore cho báo cáo LaTeX & PlantUML
+# ==========================================
+
+# --- LaTeX Auxiliary / Intermediate Build Files ---
+*.aux
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.log
+*.out
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+*.fdb_latexmk
+*.fls
+*.xdv
+*.dvi
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+
+# --- TeX Indexing & Glossary Artifacts ---
+*.glo
+*.gls
+*.glg
+*.ist
+*.idx
+*.ind
+*.ilg
+
+# --- PlantUML Binaries (>40MB) ---
+plantuml*.jar
+
+# --- Temporary & Preview Images ---
+*_preview.png
+*temp*
+temp_out/
+
+# --- OS & Editor Artifacts ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*~
+*.bak
+*.swp
+*.swo
+.vscode/
+.idea/

@@ -1,0 +1,82 @@
+@startuml "current"
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 12
+skinparam roundCorner 8
+skinparam dpi 300
+skinparam nodesep 30
+skinparam ranksep 28
+skinparam padding 4
+' skinparam linetype ortho
+' left to right direction
+
+skinparam package {
+    BorderThickness 1.5
+    FontColor #0F172A
+    FontSize 12
+    FontStyle bold
+    Style rectangle
+}
+
+skinparam rectangle {
+    BorderThickness 1.5
+    FontColor #0F172A
+}
+
+skinparam database {
+    BorderThickness 1.5
+    FontColor #0F172A
+}
+
+skinparam arrow {
+    Color #334155
+    FontColor #0F172A
+    FontSize 11
+    Thickness 1.4
+}
+
+package "LUỒNG NHẬN DẠNG & CĂN CHỈNH TRỰC TUYẾN" as pkg_online #F8FAFC;line:0284C7 {
+    rectangle "<b>Tín hiệu âm thanh đầu vào" as in_audio #E0F2FE;line:0284C7
+    
+    rectangle "<b>1. Tiền xử lý & Nén khoảng lặng</b>\nVAD thích nghi & Ánh xạ thời gian" as b1 #FFFFFF;line:0284C7
+    
+    rectangle "<b>2. Nhận dạng & Căn chỉnh mức từ</b>\nWhisper ASR + CTC 21 tầng đặc trưng" as b2 #FFFFFF;line:0284C7
+    
+    rectangle "<b>3. Đối sánh ngữ âm & Chuẩn hóa</b>\nLân cận FAISS + Quy tắc CSDL" as b3 #FFFFFF;line:0284C7
+    
+    rectangle "<b>Văn bản đầu ra & Tọa độ từ chuẩn xác</b>\nChuỗi từ UTF-8 & Mốc thời gian từng từ" as out_text #DCFCE7;line:16A34A
+}
+
+package "CSDL ĐA PHƯƠNG TIỆN                                        " as pkg_db #FAF5FF;line:7C3AED {
+    database "<b>Chỉ mục Vector FAISS</b>\n6.652 Vector âm học 768 chiều\nKhông gian đặc trưng dùng chung" as db_faiss #F3E8FF;line:7C3AED
+    
+    database "<b>CSDL Quan hệ SQLite</b>\n5 bảng siêu dữ liệu quan hệ\nQuy tắc biến âm, Từ điển & Nhật ký" as db_sql #F3E8FF;line:7C3AED
+}
+
+package "ㅤ HỌC NHÃNㅤCHỦ ĐỘNG" as pkg_feedback #FFFBEB;line:D97706 {
+    rectangle "<b>4. Học nhãn bổ sung tức thì\nTrích xuất vector nóng\n& Ghi quy tắc CSDL" as b4 #FEF3C7;line:D97706
+}
+
+' Hàng 1 luồng online: Trái sang Phải
+in_audio -right-> b1 : "<back:#F8FAFC> Sóng âm gốc </back>" 
+b1 -right-> b2 : "<back:#F8FAFC> Sóng âm nén & </back>\n<back:#F8FAFC> Ánh xạ thời gian </back>"
+
+' Chuyển xuống Hàng 2: Phải sang Trái (Chu trình xử lý)
+b1 -[hidden]down-> b3
+b2 --> b3 : "<back:#F8FAFC> Tọa độ từ & </back>\n<back:#F8FAFC> Vector 768 chiều </back>"
+b3 -left-> out_text : "<back:#F8FAFC> Văn bản chuẩn xác </back>\n<back:#F8FAFC> (Hậu kiểm CSDL) </back>"
+
+' Liên kết giữa Luồng Online và CSDL MMDBMS
+b2 ..> db_sql : "Cấp từ khóa ưu tiên"
+b3 <--> db_faiss : "Đối sánh vector Cosine"
+b3 <--> db_sql : "Tra cứu quy tắc & Từ điển thực thể"
+
+' Đồng bộ nội bộ MMDBMS
+db_faiss <-right-> db_sql : "<back:#FAF5FF> <b>Đồng bộ khóa 1–1</b> </back>\n<back:#FAF5FF> (Vector ↔ Siêu dữ liệu) </back>"
+
+' Vòng lặp phản hồi học nhãn chủ động (Active Learning Loop)
+out_text -right-> b4 : "Người dùng sửa từ sai"
+b4 -left-> pkg_db
+
+@enduml

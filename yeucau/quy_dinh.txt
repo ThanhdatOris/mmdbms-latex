@@ -1,0 +1,187 @@
+TIÊU ĐỀ BÁO 
+CÁO 
+VIẾ
+T BẰNG CHỮ IN HOA ĐẬM, CỠ CHỮ 13
+Nguyễn Văn A
+ và
+ 
+Trần
+ Văn B 
+*
+Tác giả liên hệ
+ (email:…) 
+TÓM TẮT
+     
+Phần Tóm tắt được viết in nghiêng, font chữ Times New Roman, cỡ chữ 
+1
+2
+ với dung 
+lượng tối đa 
+(
+1
+50 đến 200
+ từ)
+. Tóm tắt được trình bày ngắn gọn bao gồm: mục đích nghiên cứu, phương pháp sử dụng, kết quả chính, kết luận và ý nghĩa. Từ viết tắt chỉ được dùng khi nó được lặp lại ít nhất hai lần và được giới thiệu đầy đủ ở lần viết đầu tiên. Tài liệu tham khảo không được trích dẫn trong phần Tóm tắt.
+1.
+ 
+ĐẶT VẤN ĐỀ
+ 
+Phần 
+đặt vấn đề b
+ao gồm các nội dung sau: 
+bối cảnh, thực trạng vấn đề nghiên cứu, tầm quan trọng của nghiên cứu, tổng quan tài liệu, xác định vấn đề nghiên cứu, chỉ ra tính mới của nghiên cứu, mục tiêu nghiên cứu; tránh trình bày dài dòng, chi tiết hoặc chỉ liệt kê, tóm tắt những nghiên cứu trước.
+2. 
+PHƯƠNG PHÁP NGHIÊN CỨU
+ 
+Nghiên cứu được mô tả một cách đầy đủ, chi tiết để các nhà nghiên cứu khác có thể áp dụng được
+. Các nội dung cụ thể như: thiết kế nghiên cứu, đối tượng nghiên cứu, địa điểm và thời gian nghiên cứu, cỡ mẫu và chọn mẫu, công cụ nghiên cứu và kỹ thuật thu thập thông tin, phân tích dữ liệu,…
+Các phương pháp đã được công bố phải được trích dẫn nguồn và được mô tả nếu có sự điều chỉnh. 
+3. 
+KẾT QUẢ VÀ THẢO LUẬN
+Những kết quả/phát hiện qua nghiên cứu được trình bày trong phần này, để trả lời được các câu hỏi nghiên cứu; nên trình bày những kết quả quan trọng, đồng thời trình bày theo thứ tự hợp lý; diễn giải ngắn gọn, rõ ràng, mạch lạc, không đơn thuần lặp lại số liệu có trong bảng/hình, đặc biệt trung thực với kết
+ quả nghiên cứu.
+3.1. 
+Cách viết các tiểu mục
+Bài viết không 
+quá ba
+ cấp tiểu mục. Các tiểu mục được trình bày như sau:
+Tiêu mục cấp 1
+1. VIẾT HOA, IN ĐẬM
+Tiêu mục cấp 2
+1.1. Viết hoa chữ cái đầu, in đậm
+Tiêu mục cấp 3
+1.1.1. Viết hoa chữ cái đầu, in nghiêng
+Ví dụ:
+1. 
+ĐẶT VẤN ĐỀ (hoặc 
+giới
+ thiệu, hoặc dẫn nhập) 
+1.1. Đề mục cấp 2 được viết bằng chữ thường, in đậm
+   
+1.1.1. Đề mục cấp 3 được viết bằng chữ thường, in nghiêng
+Nội dung bài viết phải được soạn bằng 
+Microsoft Word
+, khổ giấy A4, 
+canh
+ lề
+ trái 3
+cm, phả
+i 2cm, trên 2
+cm, dướ
+i 2
+cm. 
+Bản thảo dài không quá mườ
+i 
+ (10) trang 
+khổ A4
+, bao gồm cả bảng, hình, tài liệu tham khảo, và phụ lục (nếu có). 
+Phần nội dung bản thảo sử dụng mã 
+Unicode
+, phông chữ 
+Times New Roman
+, cỡ chữ 13, 
+cách dòng 
+Single
+, cách đoạn 6pt phía sau (
+After
+) và 6pt phía trước (
+Before
+).
+ Dòng đầu tiên của mỗi đoạn thụt vào 1 tab bằ
+ng 1.27
+cm. Canh lề thẳng đều hai bên. 
+1.1.2. Đề mục cấp 3 được viết bằng chữ thường, in nghiêng
+Không đánh số thứ tự cho các đề mục 
+sau tiểu mục cấp 3
+. Các đề mục 
+sau tiểu mục cấp 3
+ (nếu có) có thể được đánh dấu tròn như minh họa sau đây:
+ Điểm thứ nhất
+ Điểm thứ hai
+3.2. 
+Bảng và hình
+3.2.1. Các bảng
+Tất cả các bảng phải được canh giữa và phải được đặt ở vị trí ngay sau phần nội dung đề cập đế
+n.
+ Các tiêu đề của bảng cần được đánh số thứ tự (số
+ Ả
+-rập) rõ ràng và được dẫn chiếu trong văn bản một cách thích hợp. Tiêu đề bảng phải được đặt trên đầu bảng, canh giữa, in đậm. 
+Bảng 
+1. Tiêu đề của bảng đặt trên đầu bảng
+Tiêu đề cột
+Tiêu đề cột
+Tiêu đề cột
+Dòng 1
+1
+2
+Dòng 2
+5
+6
+Ghi chú: Phần ghi chú (nếu có) phải được đặt ở cuối bảng, cỡ chữ 12, canh đều hai bên, và là một dòng không tách rời của bảng.
+Nguồn: Cần dẫn nguồn khi cần thiết. Ví dụ: Nguyễ
+n Văn B
+ (2015).
+3.2.2
+. Các hình
+Tất cả các hình vẽ, hình chụp, hộp, sơ đồ, biểu đồ, bản đồ, lưu đồ, thuật toán (không phải mã giả)... phải được gọi chung là hình, được canh giữa và đặt ở vị trí ngay sau phần nội dung đề cập đế
+n
+. Các hình phải có chất lượng tốt, rõ nét. 
+Hình được đánh số theo số thứ tự, ví dụ: Hình 1, Hình 2,….
+Các hình được sao chụp với chất lượng phân giải kém sẽ không được chấp nhận. Các hình nếu được vẽ bằng chức năng Shape thì phải được chuyển về dạng Picture để tránh trường hợp nội dung và thứ tự đối tượng bị thay đổi.
+  
+Hình 
+ SEQ Hình \* ARABIC 
+1
+.
+ Tiêu đề của hình nằm dưới hình, in đậm, canh giữa
+Nguồn: Cần dẫn nguồn khi cần thiết. Ví dụ: Nguyễn Văn A và cs. (2014).
+3.2.3. Các công thức
+Các công thức phải được soạn thảo bằng chức năng 
+Insert/Object/Microsoft Equation 3.0
+ trên 
+Microsoft Word
+ (hoặc các phần mềm bổ trợ có tính năng tương tự như MathType) và các dấu 
+(chấm (.); phẩy (,); chấm phẩy (;))
+ sau công thức phải được đặt liền sau trong công thức. Công thức được đánh số thứ tự và các số thứ tự này phải được canh 
+giữa
+ và được dẫn chiếu trong văn bản một cách thích hợp, chẳng hạn như: “... thay thế công thức (1) vào công thức (3), ta có công thức tổng quát (4) như sau...”. Dưới đây là một gợi ý hữu ích để tác giả tham khảo.
+x=
+-
+b
+±
+b
+2
+-
+ac
+a
+                            
+1
+  
+4. 
+KẾT LUẬN VÀ HÀM Ý QUẢN TRỊ
+ 
+Kết luận phải rõ ràng, cô đọng trên cơ sở kết quả của nghiên cứu; nêu ý nghĩa của nghiên cứu, đề xuất hướng nghiên cứu tiếp theo; không lặp lại kết quả nghiên cứu
+ 
+(cần 
+ngắn gọn (khoảng 100
+ đến 200
+ từ), không liệt kê các kết quả của công trình nghiên cứu
+)
+.
+Tài liệu tham khảo
+Tác giả cần đảm bảo rằng tất cả các trích dẫn (bao gồm trích dẫn theo cách diễn đạt lại và/hoặc trích dẫn nguyên văn) đều được dẫn nguồn trích dẫn một cách 
+thích hợp và nguồn trích dẫn ấy phải được liệt kê trong danh mục tài liệu tham khảo. 
+Danh mục tài liệu tham khảo được sắp xếp theo thứ tự ABC, không đánh số thứ tự. Dòng đầu tiên của mỗi đoạn thụt vào 1
+ 
+tab 
+(first line)
+ bằng 1.27 cm, từ dòng thứ hai trở đi 
+(hanging)
+ thụt vào 2 cm.
+Tác giả thực hiện trích dẫn theo quy định danh mục tài liệu tham khảo và trích dẫn tài liệu.
+Phụ lục
+Phụ lục (nếu có) phải được đặt ngay sau phần “Tài liệu tham khảo”. Nếu có nhiều phụ lục khác nhau thì chúng cần được đánh thứ tự bằng các chữ cái A, B, C 
+và được dẫn chiếu trong văn bản một cách thích hợp. Tác giả được khuyến khích 
+sử dụng chức năng 
+Cross-reference
+ để thực hiện việc dẫn chiếu này một cách tự động.

@@ -1,0 +1,72 @@
+Đề tài 1: Xây dựng hệ thống chuyển đổi văn bản thành âm thanh (Text-to-Speech)
+
+   1. Sử dụng lại bộ dữ liệu đã có gồm danh sách từ tiếng Việt và các file âm thanh đã
+      thu âm tương ứng với từng từ (theo giọng của các thành viên trong nhóm), xem
+      đây là ngữ liệu (corpus) văn bản – âm thanh song song để xây dựng hệ thống
+      tổng hợp giọng nói.
+   2. Hãy tìm hiểu các kỹ thuật/phương pháp tổng hợp giọng nói (Text-to-Speech)
+      hiện hành, đặc biệt phù hợp với bài toán tổng hợp ở mức từ (word-level) dựa trên
+      bộ dữ liệu thu âm của từng nhóm (các từ thu âm “ngắn dài khác nhau” theo chuẩn
+      lấy từ các trang như fpt.ai hây vbee.vn).
+   3. Xây dựng hệ thống chuyển đổi văn bản thành âm thanh với đầu vào là một từ
+      (thuộc danh sách đã có), đầu ra là file âm thanh phát âm từ đó.
+   4. Trình bày sơ đồ khối của hệ thống và quy trình thực hiện yêu cầu của đề bài (từ
+      bước nhận văn bản đầu vào đến bước tạo ra tín hiệu âm thanh đầu ra).
+   5. Trình bày các thuộc tính/đặc trưng âm thanh được sử dụng để biểu diễn và tái
+      tạo giọng nói (ví dụ: đặc trưng phổ, pitch, thời lượng, năng lượng…), cùng kỹ
+      thuật trích rút và tái tổng hợp từ các đặc trưng đó.
+   6. Trình bày cách lưu trữ và quản lý dữ liệu văn bản – âm thanh (theo từ và theo
+      giọng người thu âm), cũng như cách hệ thống tra cứu/kết hợp các đặc trưng đã
+      lưu để tổng hợp âm thanh cho một từ đầu vào mới.
+   7. Demo hệ thống: nhập một từ (hoặc chuỗi từ) thuộc danh sách, xuất ra file âm
+      thanh tương ứng; đánh giá kết quả dựa trên chất lượng/độ tự nhiên của âm thanh
+      tổng hợp so với âm thanh gốc đã thu.
+
+Ghi chú: vì đây là bài toán "giảm tải" so với nhận dạng giọng nói, các nhóm có thể
+chọn hướng đơn giản ở mức ghép nối (concatenative synthesis) — với mỗi từ,
+chọn/ghép trực tiếp file âm thanh đã thu âm tương ứng không cần phải sử dụng tới các
+mô hình học sâu (như Tacotron, FastSpeech…), miễn là trình bày rõ quy trình, cách lưu
+trữ dữ liệu và có demo minh họa.
+
+Đề tài 2: Xây dựng hệ thống chuyển đổi âm thanh thành văn bản (Speech-to-Text)
+
+   1. Sử dụng lại bộ dữ liệu đã có gồm danh sách từ tiếng Việt và các file âm thanh đã
+      thu âm tương ứng với từng từ (theo giọng của các thành viên trong nhóm), xem
+      đây là tập dữ liệu huấn luyện/tham chiếu cho bài toán nhận dạng ở mức từ (word-
+      level).
+   2. Hãy tìm hiểu các kỹ thuật xử lý và nhận dạng giọng nói tiếng Việt hiện hành, tập
+      trung vào bài toán nhận dạng đơn từ (isolated word recognition) thay vì nhận
+      dạng câu liên tục (continuous speech recognition), phù hợp với quy mô dữ liệu
+      đã có.
+   3. Xây dựng hệ thống chuyển đổi âm thanh thành văn bản với đầu vào là một file
+      âm thanh mới (phát âm một từ thuộc danh sách đã có, có thể do người đã thu âm
+      trước đó hoặc người mới phát âm), đầu ra là từ văn bản được nhận dạng tương
+      ứng.
+   4. Trình bày sơ đồ khối của hệ thống và quy trình thực hiện yêu cầu của đề bài (từ
+      bước nhận âm thanh đầu vào đến bước xuất ra văn bản).
+   5. Trình bày các thuộc tính/đặc trưng âm thanh được sử dụng để nhận dạng giọng
+      nói (ví dụ: năng lượng trung bình, Zero Crossing Rate, pitch, spectrogram,
+      MFCC…), cùng kỹ thuật để trích rút các thuộc tính đó.
+   6. Trình bày cách lưu trữ và quản lý các thuộc tính âm thanh (theo từ và theo người
+      thu âm, ví dụ dưới dạng file .csv), và cách hệ thống so khớp/phân loại âm thanh
+      đầu vào dựa trên các thuộc tính đó để trả về từ tương ứng.
+   7. Demo hệ thống: nhập một file âm thanh mới, xuất ra từ văn bản được nhận dạng;
+      đánh giá kết quả dựa trên độ chính xác nhận dạng (accuracy), có thể đánh giá
+      riêng với âm thanh của người đã có trong tập huấn luyện và với giọng đọc mới
+      chưa từng xuất hiện.
+
+Ghi chú: Đề tài này có phần mở rộng hơn so với đề tài 1. Tuy nhiên, thầy chỉ cần phân
+loại đơn từ dựa trên đặc trưng âm thanh và một thuật toán học máy đơn giản (KNN, K-
+means…) không bắt buộc dùng mô hình học sâu phức tạp (RNN/LSTM/CNN) trừ khi
+nhóm muốn nâng cao.
+
+
+Quy ước mã hóa từ có dấu và đặt tên file .wav:
+Dấu giống bộ gõ vni (số là dấu) và đặt phía sau mỗi từ. Với những từ
+không dấu thì đặt số 0 phía sau
+VD:
+ba -> ba0, bác -> bac1, cảng -> cang3
+Chữ â, ô, ê -> quy định â -> a+, ô -> o+, ê -> e+
+Chữ ă, ơ, ư -> quy định ă -> aa, ơ-> oo, ư -> uu
+Chữ đ -> d-
+

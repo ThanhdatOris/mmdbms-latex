@@ -1,0 +1,172 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{baocao_format}[2026/10/25 Dinh dang bao cao theo quy dinh CTUET]
+
+% --- Font chu & Ngon ngu (bien dich bang pdfLaTeX) ---
+% Theo co che cua D:\2022DoAnTN_KhoaDat/luanvan.sty:
+% vietnam xu ly Unicode/T5, mathptmx va times cung cap bo chu Times.
+\RequirePackage{iftex}
+\ifPDFTeX
+  \RequirePackage[utf8]{vietnam}
+  \RequirePackage{mathptmx}
+  \RequirePackage{times}
+\else
+  \RequirePackage{fontspec}
+  \setmainfont{Times New Roman}
+\fi
+\RequirePackage{scrextend}
+
+% --- Khung trang & Le trang theo quy dinh ---
+% Le trai 3cm, phai 2cm, tren 2cm, duoi 2cm
+\RequirePackage[left=3cm,right=2cm,top=2cm,bottom=2cm,headheight=16pt]{geometry}
+
+% --- Co chu & Dan dong co so ---
+% Noi dung chinh: co chu 13pt, dan dong Single, cach doan 6pt
+\changefontsizes{13pt}
+\setlength{\parindent}{1.27cm} % 1 tab bang 1.27cm
+\setlength{\parskip}{6pt}      % Cach doan 6pt
+\linespread{1.0}               % Cach dong Single
+\setlength{\emergencystretch}{4em}
+
+% --- Cac goi toan, bang bieu, do hoa ---
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{booktabs,tabularx,array,longtable,multirow}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\RequirePackage{enumitem}
+\setlist{nosep,leftmargin=0.65cm}
+\renewcommand{\arraystretch}{1.12}
+
+\RequirePackage{caption}
+\RequirePackage{titlesec}
+\RequirePackage{indentfirst} % Dat sau titlesec de dam bao thut dau dong doan dau tien
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{microtype}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{url}
+\RequirePackage{etoolbox}
+\RequirePackage[hidelinks]{hyperref}
+
+% --- Dinh nghia cac co chu chuan hoa theo quy dinh ---
+\newcommand{\titlefontsize}{\fontsize{13pt}{16pt}\selectfont\bfseries}
+\newcommand{\headingfontsize}{\fontsize{13pt}{16pt}\selectfont\bfseries}
+\newcommand{\subheadingfontsize}{\fontsize{13pt}{16pt}\selectfont\bfseries}
+\newcommand{\subsubheadingfontsize}{\fontsize{13pt}{16pt}\selectfont\bfseries\itshape}
+\newcommand{\abstractfontsize}{\fontsize{12pt}{15pt}\selectfont}
+\newcommand{\authorfontsize}{\fontsize{13pt}{16pt}\selectfont\bfseries}
+\newcommand{\affilfontsize}{\fontsize{12pt}{14pt}\selectfont}
+\newcommand{\captionfontsize}{\fontsize{12pt}{14pt}\selectfont}
+\newcommand{\tablefontsize}{\fontsize{12pt}{14.5pt}\selectfont}
+\newcommand{\reffontsize}{\fontsize{12pt}{15pt}\selectfont}
+
+% --- Dinh dang Tieu de va Cum tac gia (Maketitle) ---
+% Loai bo khoang cach thua mac dinh (\vskip 1.5em) giua Tieu de va Cum tac gia
+\def\@maketitle{%
+  \newpage
+  \null
+  \begin{center}%
+    \let\footnote\thanks
+    {\@title\par}%
+    \vskip 4pt% Triet tieu spacing thua giua tieu de va tac gia
+    {\@author\par}%
+  \end{center}%
+  \par
+  \vskip 4pt% Khoang cach gon gang truoc khung Tom tat
+}
+\newcommand{\authorright}[1]{\makebox[\textwidth][r]{#1}}
+
+% --- Dinh dang trang: Danh so trang o giua tren dau trang ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}}
+\fancypagestyle{firstpage}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}}
+
+% --- Dinh dang tieu de cac muc (Heading 1, 2, 3) co dau cham ---
+% Cap 1: 1. VIET HOA, IN DAM (co chu 13)
+\titleformat{\section}
+  {\headingfontsize}
+  {\thesection.}{0.5em}{\MakeUppercase}
+
+% Cap 2: 1.1. Viet hoa chu cai dau, in dam (co chu 13)
+\titleformat{\subsection}
+  {\subheadingfontsize}
+  {\thesubsection.}{0.5em}{}
+
+% Cap 3: 1.1.1. Viet hoa chu cai dau, in nghieng (co chu 13)
+\titleformat{\subsubsection}
+  {\subsubheadingfontsize}
+  {\thesubsubsection.}{0.5em}{}
+
+% Khoang cach truoc/sau tieu de muc (dung dang khong dau * de khong mat thut dau dong doan sau)
+\titlespacing{\section}{0pt}{12pt}{6pt}
+\titlespacing{\subsection}{0pt}{10pt}{4pt}
+\titlespacing{\subsubsection}{0pt}{8pt}{3pt}
+
+% --- Dinh dang Chuyen biet cho Bang va Hinh ---
+\DeclareCaptionFont{caption12}{\captionfontsize}
+\captionsetup{font=caption12,labelfont=bf,textfont=bf,justification=centering}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+
+% Tu dong ap dung co chu 12pt cho noi dung tat ca bang
+\AtBeginEnvironment{tabular}{\tablefontsize}
+\AtBeginEnvironment{tabularx}{\tablefontsize}
+
+% Kieu cot bang
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% Macro chu thich & nguon (co chu 12, in nghieng)
+\newcommand{\source}[1]{\par\smallskip\noindent\captionfontsize\textit{Nguồn: #1.}}
+\newcommand{\tablenote}[1]{\par\smallskip\noindent\captionfontsize\textit{Ghi chú: #1.}}
+
+% Macro ma code inline
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+
+% --- Khung Tom tat (Abstract Box): 2 divider tren va duoi, tat 2 ben ---
+\newtcolorbox{summarybox}{
+  enhanced,
+  colback=white,
+  colframe=black,
+  boxrule=0pt,
+  toprule=0.45pt,
+  bottomrule=0.45pt,
+  leftrule=0pt,
+  rightrule=0pt,
+  arc=0pt,
+  left=0pt,
+  right=0pt,
+  top=0.35cm,
+  bottom=0.35cm,
+  before skip=0.20cm,
+  after skip=0.25cm
+}
+
+% Moi truong Tom tat: Tieu de can trai thut 1.27cm, noi dung co chu 12 in nghieng thut 1.27cm
+\newenvironment{tomtat}{
+  \begin{summarybox}
+  \setlength{\parindent}{1.27cm}%
+  \noindent\hspace*{\parindent}\textbf{TÓM TẮT}\par\vspace{3pt}
+  \abstractfontsize\itshape
+  \noindent\hspace*{\parindent}%
+}{
+  \par
+  \end{summarybox}
+}
+
+% Macro Tu khoa (co chu 12)
+\newcommand{\keywords}[1]{\par\noindent{\abstractfontsize\textbf{Từ khóa:} #1}\par}
+
+% --- Moi truong Danh muc Tai lieu tham khao chuan hoa (Hanging Indent) ---
+% Dong 1 sat le trai (0cm), tu dong thu hai tro di thut le treo (hanging) 1 tab = 1.27cm
+\newenvironment{tldanhsach}{
+  \reffontsize
+  \begin{enumerate}[label={[\arabic*]},leftmargin=1.27cm,
+    labelsep=0.35cm,itemindent=0pt,itemsep=4pt,parsep=0pt]
+}{
+  \end{enumerate}
+}
+
+\endinput
