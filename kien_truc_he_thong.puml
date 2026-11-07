@@ -5,11 +5,9 @@ skinparam defaultFontName "Arial"
 skinparam defaultFontSize 12
 skinparam roundCorner 8
 skinparam dpi 300
-skinparam nodesep 30
+skinparam nodesep 28
 skinparam ranksep 28
 skinparam padding 4
-' skinparam linetype ortho
-' left to right direction
 
 skinparam package {
     BorderThickness 1.5
@@ -36,47 +34,51 @@ skinparam arrow {
     Thickness 1.4
 }
 
-package "LUỒNG NHẬN DẠNG & CĂN CHỈNH TRỰC TUYẾN" as pkg_online #F8FAFC;line:0284C7 {
-    rectangle "<b>Tín hiệu âm thanh đầu vào" as in_audio #E0F2FE;line:0284C7
+package "LUỒNG NHẬN DẠNG, KIỂM ĐỊNH WAV2VEC2-VI & CĂN CHỈNH TRỰC TUYẾN" as pkg_online #F8FAFC;line:0284C7 {
+    rectangle "<b>Tín hiệu âm thanh đầu vào</b>\nChuẩn hóa 16kHz Mono" as in_audio #E0F2FE;line:0284C7
     
-    rectangle "<b>1. Tiền xử lý & Nén khoảng lặng</b>\nVAD thích nghi & Ánh xạ thời gian" as b1 #FFFFFF;line:0284C7
+    rectangle "<b>1. Tiền xử lý & Nén khoảng lặng</b>\nLọc Bandpass 75-7600Hz & TimeMap" as b1 #FFFFFF;line:0284C7
     
-    rectangle "<b>2. Nhận dạng & Căn chỉnh mức từ</b>\nWhisper ASR + CTC 21 tầng đặc trưng" as b2 #FFFFFF;line:0284C7
+    rectangle "<b>2. Nhận dạng Ngữ cảnh (WhisperX)</b>\nMô hình <b>Whisper Large-v3</b>\n+ Hotwords ưu tiên từ CSDL" as b2 #FFFFFF;line:0284C7
+
+    rectangle "<b>3. Kiểm định & Căn chỉnh Mức từ</b>\nMô hình <b>Wav2Vec2-VI</b> (21 tầng CTC)\nĐo điểm CTC 20ms & Biên [Start, End]" as b2b #EEF2FF;line:4F46E5
     
-    rectangle "<b>3. Đối sánh ngữ âm & Chuẩn hóa</b>\nLân cận FAISS + Quy tắc CSDL" as b3 #FFFFFF;line:0284C7
+    rectangle "<b>4. Đối sánh Ngữ âm & Chuẩn hóa</b>\nPhonetic Cohort FAISS + Trọng tài SQLite\n& Chuẩn hóa 7-gram (Đắk Lắk, Kon Tum, cafe)" as b3 #FFFFFF;line:0284C7
     
     rectangle "<b>Văn bản đầu ra & Tọa độ từ chuẩn xác</b>\nChuỗi từ UTF-8 & Mốc thời gian từng từ" as out_text #DCFCE7;line:16A34A
 }
 
-package "CSDL ĐA PHƯƠNG TIỆN                                        " as pkg_db #FAF5FF;line:7C3AED {
-    database "<b>Chỉ mục Vector FAISS</b>\n6.652 Vector âm học 768 chiều\nKhông gian đặc trưng dùng chung" as db_faiss #F3E8FF;line:7C3AED
+package "CSDL ĐA PHƯƠNG TIỆN HAI TẦNG (MMDBMS)                                " as pkg_db #FAF5FF;line:7C3AED {
+    database "<b>Chỉ mục Vector FAISS (768-D)</b>\n6.652 Vector âm tiết chuẩn (quoc_dung)\nTrích xuất từ tầng ẩn <b>Wav2Vec2-VI</b>" as db_faiss #F3E8FF;line:7C3AED
     
-    database "<b>CSDL Quan hệ SQLite</b>\n5 bảng siêu dữ liệu quan hệ\nQuy tắc biến âm, Từ điển & Nhật ký" as db_sql #F3E8FF;line:7C3AED
+    database "<b>CSDL Quan hệ SQLite (5 Bảng)</b>\nNhãn âm tiết, Mẫu .wav, 102 Quy tắc biến âm,\n1.564 Từ điển thực thể & Nhật ký đánh giá" as db_sql #F3E8FF;line:7C3AED
 }
 
-package "ㅤ HỌC NHÃNㅤCHỦ ĐỘNG" as pkg_feedback #FFFBEB;line:D97706 {
-    rectangle "<b>4. Học nhãn bổ sung tức thì\nTrích xuất vector nóng\n& Ghi quy tắc CSDL" as b4 #FEF3C7;line:D97706
+package "   HỌC NHÃN   CHỦ ĐỘNG" as pkg_feedback #FFFBEB;line:D97706 {
+    rectangle "<b>5. Học nhãn bổ sung tức thì (< 0,2s)</b>\nAuto-Slice .wav + Nạp nóng Vector\n<b>Wav2Vec2-VI</b> vào FAISS & Ghi luật SQLite" as b4 #FEF3C7;line:D97706
 }
 
-' Hàng 1 luồng online: Trái sang Phải
+' Hàng 1 luồng online: Trái sang Phải (in_audio -> b1 -> b2)
 in_audio -right-> b1 : "<back:#F8FAFC> Sóng âm gốc </back>" 
-b1 -right-> b2 : "<back:#F8FAFC> Sóng âm nén & </back>\n<back:#F8FAFC> Ánh xạ thời gian </back>"
+b1 -right-> b2 : "<back:#F8FAFC> Sóng âm nén & </back>\n<back:#F8FAFC> Bảng TimeMap </back>"
 
-' Chuyển xuống Hàng 2: Phải sang Trái (Chu trình xử lý)
+' Chuyển xuống Hàng 2: Phải sang Trái (b2 -> b2b -> b3 -> out_text)
+in_audio -[hidden]down-> out_text
 b1 -[hidden]down-> b3
-b2 --> b3 : "<back:#F8FAFC> Tọa độ từ & </back>\n<back:#F8FAFC> Vector 768 chiều </back>"
+b2 -down-> b2b : "<back:#F8FAFC> Văn bản sơ bộ </back>"
+b2b -left-> b3 : "<back:#F8FAFC> Tọa độ [Start, End], Điểm CTC </back>\n<back:#F8FAFC> & Vector Wav2Vec2 768-D </back>"
 b3 -left-> out_text : "<back:#F8FAFC> Văn bản chuẩn xác </back>\n<back:#F8FAFC> (Hậu kiểm CSDL) </back>"
 
 ' Liên kết giữa Luồng Online và CSDL MMDBMS
-b2 ..> db_sql : "Cấp từ khóa ưu tiên"
-b3 <--> db_faiss : "Đối sánh vector Cosine"
-b3 <--> db_sql : "Tra cứu quy tắc & Từ điển thực thể"
+b2 ..> db_sql
+b3 <--> db_faiss : "Truy vấn Cosine\n(Phonetic Cohort)"
+b3 <--> db_sql : "Trọng tài quy tắc, Từ điển 7-gram\n& Cấp Hotwords ưu tiên"
 
 ' Đồng bộ nội bộ MMDBMS
-db_faiss <-right-> db_sql : "<back:#FAF5FF> <b>Đồng bộ khóa 1–1</b> </back>\n<back:#FAF5FF> (Vector ↔ Siêu dữ liệu) </back>"
+db_faiss <-right-> db_sql : "<back:#FAF5FF> <b>Đồng bộ khóa 1–1 (sample_id)</b> </back>\n<back:#FAF5FF> (Vector 768-D ↔ Siêu dữ liệu) </back>"
 
 ' Vòng lặp phản hồi học nhãn chủ động (Active Learning Loop)
-out_text -right-> b4 : "Người dùng sửa từ sai"
-b4 -left-> pkg_db
+out_text -down-> b4 : "Người dùng sửa từ sai / thiếu nhãn"
+b4 -right-> db_faiss : "Cập nhật nóng\nFAISS & SQLite"
 
 @enduml
